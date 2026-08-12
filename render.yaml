@@ -1,0 +1,43 @@
+# Render Blueprint for 掌心窗公开版 v0.2.4-public
+# 一键部署会创建两个服务：手机端后端 server + MCP 服务。
+# 部署后：
+# - 手机 App 填 zhangxinchuang-server 的外部地址。
+# - AI/MCP 客户端填 zhangxinchuang-mcp 的 /mcp 或 /sse 地址。
+
+envVarGroups:
+  - name: zhangxinchuang-public-shared
+    envVars:
+      - key: LINJIAN_TOKEN
+        generateValue: true
+      - key: LINJIAN_DEFAULT_DEVICE
+        value: android-phone
+
+services:
+  - type: web
+    name: zhangxinchuang-server
+    runtime: python
+    plan: free
+    rootDir: server
+    buildCommand: echo ok
+    startCommand: python linjian_server.py
+    envVars:
+      - fromGroup: zhangxinchuang-public-shared
+      - key: LINJIAN_HOST
+        value: 0.0.0.0
+      - key: LINJIAN_KEEP
+        value: 3
+
+  - type: web
+    name: zhangxinchuang-mcp
+    runtime: node
+    plan: free
+    rootDir: mcp
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - fromGroup: zhangxinchuang-public-shared
+      - key: LINJIAN_URL
+        fromService:
+          type: web
+          name: zhangxinchuang-server
+          property: hostport
