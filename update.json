@@ -1,0 +1,13 @@
+{
+  "latest_version_name": "0.3.5.1",
+  "latest_version_code": 30501,
+  "apk_url": "https://github.com/linzhi-524/linjian-peek-public/releases/download/v0.3.5.1/Zhangxinchuang-public-v0.3.5.1.apk",
+  "sha256": "",
+  "required": false,
+  "changelog": [
+    "允许 Android 端连接局域网/自建服务器的 HTTP 明文地址，例如 http://192.168.x.x:8513。",
+    "修复本地纯 HTTP 服务轮询时报 Cleartext HTTP traffic not permitted 的问题。",
+    "保留 v0.3.5.0 归电公开版全部功能，本版为连接兼容性 hotfix。",
+    "公网部署仍建议使用 HTTPS；HTTP 放开主要用于本人设备、本地局域网和测试环境。"
+  ]
+}
