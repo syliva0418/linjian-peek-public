@@ -1,0 +1,18 @@
+{
+  "name": "linjian-unified-mcp",
+  "version": "0.1.6",
+  "private": true,
+  "type": "module",
+  "description": "Unified MCP server for 掌心窗: screenshot, phone control, alarm, notification.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.4",
+    "express": "^4.19.2",
+    "zod": "^3.23.8"
+  }
+}
